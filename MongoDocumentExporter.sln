@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoDocumentExporter", "MongoDocumentExporter\MongoDocumentExporter.csproj", "{1D57E342-5401-40B4-99FA-637A9D212CCC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoDocumentExporter.Test", "MongoDocumentExporter.Test\MongoDocumentExporter.Test.csproj", "{00EC3F13-D22B-4604-AC95-1588951FD52C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{1D57E342-5401-40B4-99FA-637A9D212CCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D57E342-5401-40B4-99FA-637A9D212CCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D57E342-5401-40B4-99FA-637A9D212CCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00EC3F13-D22B-4604-AC95-1588951FD52C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00EC3F13-D22B-4604-AC95-1588951FD52C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00EC3F13-D22B-4604-AC95-1588951FD52C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00EC3F13-D22B-4604-AC95-1588951FD52C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
