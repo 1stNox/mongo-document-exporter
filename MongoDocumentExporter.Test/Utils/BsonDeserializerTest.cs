@@ -1,4 +1,6 @@
-﻿using MongoDocumentExporter.Utils;
+﻿using FluentAssertions;
+using MongoDB.Bson;
+using MongoDocumentExporter.Utils;
 using Xunit;
 
 namespace MongoDocumentExporter.Test.Utils;
@@ -10,12 +12,16 @@ public class BsonDeserializerTest
     {
         // Given
         var simpleQuery = "{\"createdAt\":\"2023-10-20\"}";
+        var expectedDocument = new BsonDocument
+        {
+            ["createdAt"] = "2023-10-20"
+        };
         
         // When
         var result = await BsonDeserializer.Deserialize(simpleQuery);
         
         // Then
-        Assert.Equal("2023-10-20", result["createdAt"]);
+        result.Should().BeEquivalentTo(expectedDocument, "because they have the same values");
     }
 
     [Fact]
@@ -23,27 +29,33 @@ public class BsonDeserializerTest
     {
         // Given
         var complexQuery = "{\"createdAt\":{\"$in\":[\"1\",\"2\"]}, \"updatedAt\":\"2023-10-21T12:00:00.000Z\"}";
+        var expectedInRange = new BsonArray { "1", "2" };
+        var expectedDocument = new BsonDocument
+        {
+            ["createdAt"] = new BsonDocument
+            {
+                ["$in"] = expectedInRange
+            },
+            ["updatedAt"] = "2023-10-21T12:00:00.000Z"
+        };
         
         // When
         var result = await BsonDeserializer.Deserialize(complexQuery);
         
         // Then
-        Assert.Equal("{ \"$in\" : [\"1\", \"2\"] }", result["createdAt"].ToString());
-        Assert.Equal("2023-10-21T12:00:00.000Z", result["updatedAt"].ToString());
+        result.Should().BeEquivalentTo(expectedDocument);
     }
 
     [Fact]
-    public async void ShouldThrowAFormatException()
+    public void ShouldThrowAFormatException()
     {
         // Given
         var invalidQuery = "{-";
+        Action action = () => BsonDeserializer.Deserialize(invalidQuery);
         
         // When
         
         // Then
-        await Assert.ThrowsAsync<FormatException>(async () =>
-        {
-            await BsonDeserializer.Deserialize(invalidQuery);
-        });
+        action.Should().Throw<FormatException>();
     }
 }
