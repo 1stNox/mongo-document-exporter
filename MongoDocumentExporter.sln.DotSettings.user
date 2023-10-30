@@ -2,5 +2,8 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=276da026_002D2618_002D41fd_002D957b_002D213524d96078/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="QueryBuilderTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;xUnit::00EC3F13-D22B-4604-AC95-1588951FD52C::net7.0::MongoDocumentExporter.Test.Utils.QueryBuilderTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::00EC3F13-D22B-4604-AC95-1588951FD52C::net7.0::MongoDocumentExporter.Test.Utils.BsonDeserializerTest.ShouldReturnASimpleQuery&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::00EC3F13-D22B-4604-AC95-1588951FD52C::net7.0::MongoDocumentExporter.Test.Utils.BsonDeserializerTest.ShouldReturnAComplexQuery&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::00EC3F13-D22B-4604-AC95-1588951FD52C::net7.0::MongoDocumentExporter.Test.Utils.BsonDeserializerTest.ShouldThrowAFormatException&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
