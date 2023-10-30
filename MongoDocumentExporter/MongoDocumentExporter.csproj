@@ -20,8 +20,4 @@
       <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.2" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Models\" />
-    </ItemGroup>
-
 </Project>

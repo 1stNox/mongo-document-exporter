@@ -1,20 +1,6 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1801a405_002D9f5d_002D4964_002Dbf6c_002D54b914557665/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ShouldReturnSimpleQueryFilter" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=276da026_002D2618_002D41fd_002D957b_002D213524d96078/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="QueryBuilderTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::00EC3F13-D22B-4604-AC95-1588951FD52C::net7.0::MongoDocumentExporter.Test.Utils.QueryDeserializerTest.ShouldReturnSimpleQueryFilter&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::00EC3F13-D22B-4604-AC95-1588951FD52C::net7.0::MongoDocumentExporter.Test.Utils.QueryDeserializerTest.ShouldReturnComplexQueryFilter&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=a0b82c2f_002D26ea_002D427a_002D8ac3_002Db171a34d1af1/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ShouldReturnSimpleQueryFilter #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::00EC3F13-D22B-4604-AC95-1588951FD52C::net7.0::MongoDocumentExporter.Test.Utils.QueryDeserializerTest.ShouldReturnSimpleQueryFilter&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::00EC3F13-D22B-4604-AC95-1588951FD52C::net7.0::MongoDocumentExporter.Test.Utils.QueryDeserializerTest.ShouldReturnComplexQueryFilter&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=eecd188e_002D9052_002D46a5_002Db1a1_002D3f40d9ce7f0c/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ShouldReturnSimpleQueryFilter #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::00EC3F13-D22B-4604-AC95-1588951FD52C::net7.0::MongoDocumentExporter.Test.Utils.QueryDeserializerTest.ShouldReturnSimpleQueryFilter&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::00EC3F13-D22B-4604-AC95-1588951FD52C::net7.0::MongoDocumentExporter.Test.Utils.QueryDeserializerTest.ShouldReturnComplexQueryFilter&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::00EC3F13-D22B-4604-AC95-1588951FD52C::net7.0::MongoDocumentExporter.Test.Utils.QueryDeserializerTest.ShouldThrowAnExceptionDueToInvalidBson&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::00EC3F13-D22B-4604-AC95-1588951FD52C::net7.0::MongoDocumentExporter.Test.Utils.QueryBuilderTest&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
