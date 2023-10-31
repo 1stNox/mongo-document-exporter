@@ -1,15 +1,18 @@
 ﻿using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace MongoDocumentExporter.Models;
 
 public class Query
 {
-    public BsonDocument Filter { get; set; }
-    public QueryOptions Options { get; set; }
+    public FilterDefinition<BsonDocument> Filter { get; set; }
+    public ProjectionDefinition<BsonDocument> Projection { get; set; }
+    public SortDefinition<BsonDocument>? Sort { get; set; }
 
-    public Query(BsonDocument filter, QueryOptions options)
+    public Query(FilterDefinition<BsonDocument> filter, ProjectionDefinition<BsonDocument> projection, SortDefinition<BsonDocument>? sort)
     {
         Filter = filter;
-        Options = options;
+        Projection = projection;
+        Sort = sort;
     }
 }

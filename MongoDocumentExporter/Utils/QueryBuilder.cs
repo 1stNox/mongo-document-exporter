@@ -1,31 +1,60 @@
 ﻿using MongoDB.Bson;
+using MongoDB.Driver;
 using MongoDocumentExporter.Models;
 
 namespace MongoDocumentExporter.Utils;
 
 public class QueryBuilder
 {
-    private static async Task<QueryOptions> BuildOptions(string rawProjectionOptions, string? rawSortOptions = null)
+    #region Builders
+
+    private static FilterDefinitionBuilder<BsonDocument> FilterDefinitionBuilder { get; set; } =
+        Builders<BsonDocument>.Filter;
+
+    private static ProjectionDefinitionBuilder<BsonDocument> ProjectionDefinitionBuilder { get; set; } =
+        Builders<BsonDocument>.Projection;
+    
+    private static SortDefinitionBuilder<BsonDocument> SortDefinitionBuilder { get; set; } =
+        Builders<BsonDocument>.Sort;
+
+    #endregion 
+
+    private static async Task<FilterDefinition<BsonDocument>> BuildFilter(string rawFilter)
     {
-        var projectionOptions = await BsonDeserializer.Deserialize(rawProjectionOptions);
-        BsonDocument? sortOptions = null;
+        var filter = await BsonDeserializer.Deserialize(rawFilter);
 
-        if (rawSortOptions != null) 
-            sortOptions = await BsonDeserializer.Deserialize(rawSortOptions);
+        return FilterDefinitionBuilder.JsonSchema(filter);
+    }
+    
+    private static async Task<ProjectionDefinition<BsonDocument>> BuildProjection(string rawProjection)
+    {
+        var projection = await BsonDeserializer.Deserialize(rawProjection);
 
-        return new QueryOptions(projectionOptions, sortOptions);
+        return ProjectionDefinitionBuilder.Combine(projection);
     }
 
-    public static async Task<Query> Build(string rawProjectionOptions, string? rawFilter = null, string? rawSortOptions = null)
+    private static async Task<SortDefinition<BsonDocument>> BuildSort(string rawSort)
     {
-        BsonDocument filter;
+        var sort = await BsonDeserializer.Deserialize(rawSort);
+
+        return SortDefinitionBuilder.Combine(sort);
+    }
+    
+    public static async Task<Query> Build(string rawProjection, string? rawFilter = null,
+        string? rawSort = null)
+    {
+        FilterDefinition<BsonDocument> filter;
         if (rawFilter is null)
-            filter = new BsonDocument();
+            filter = FilterDefinitionBuilder.Empty;
         else
-            filter = await BsonDeserializer.Deserialize(rawFilter);
+            filter = await BuildFilter(rawFilter);
 
-        var options = await QueryBuilder.BuildOptions(rawProjectionOptions, rawSortOptions);
+        var projection = await BuildProjection(rawProjection);
 
-        return new Query(filter, options);
+        if (rawSort is null)
+            return new Query(filter, projection, null);
+
+        var sort = await BuildSort(rawSort);
+        return new Query(filter, projection, sort);
     }
 }

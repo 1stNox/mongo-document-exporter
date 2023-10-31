@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using MongoDB.Bson;
+using MongoDB.Driver;
 using MongoDocumentExporter.Models;
 using MongoDocumentExporter.Utils;
 using Xunit;
@@ -15,19 +16,10 @@ public class QueryBuilderTest
         var rawFilter = "{ \"price\": { \"$gte\": 3000 } }";
         var rawProjectionOptions = "{ \"_id\": 1, \"createdAt\": 0 }";
         var rawSortOptions = "{ \"createdAt\": -1 }";
-        var expectedOptions = new QueryOptions(
-            new BsonDocument { ["_id"] = 1, ["createdAt"] = 0 }, 
-            new BsonDocument { ["createdAt"] = -1 }
-        );
         var expectedQuery = new Query(
-            new BsonDocument
-            {
-                ["price"] = new BsonDocument
-                {
-                    ["$gte"] = 3000
-                }
-            },
-            expectedOptions
+            Builders<BsonDocument>.Filter.Gte("price", 3000),
+            Builders<BsonDocument>.Projection.Include("_id").Exclude("createdAt"),
+            Builders<BsonDocument>.Sort.Descending("createdAt")
         );
 
         // When
@@ -44,19 +36,10 @@ public class QueryBuilderTest
         var rawFilter = "{ \"price\": { \"$gte\": 3000 } }";
         var rawProjectionOptions = "{ \"_id\": 1, \"createdAt\": 0 }";
         string? rawSortOptions = null;
-        var expectedOptions = new QueryOptions(
-            new BsonDocument { ["_id"] = 1, ["createdAt"] = 0 }, 
-            null
-        );
         var expectedQuery = new Query(
-            new BsonDocument
-            {
-                ["price"] = new BsonDocument
-                {
-                    ["$gte"] = 3000
-                }
-            },
-            expectedOptions
+            Builders<BsonDocument>.Filter.Gte("price", 3000),
+            Builders<BsonDocument>.Projection.Include("_id").Exclude("createdAt"),
+            null
         );
 
         // When
@@ -73,13 +56,10 @@ public class QueryBuilderTest
         string? rawFilter = null;
         var rawProjectionOptions = "{ \"_id\": 1, \"createdAt\": 0 }";
         var rawSortOptions = "{ \"createdAt\": -1 }";
-        var expectedOptions = new QueryOptions(
-            new BsonDocument { ["_id"] = 1, ["createdAt"] = 0 }, 
-            new BsonDocument { ["createdAt"] = -1 }
-        );
         var expectedQuery = new Query(
-            new BsonDocument(),
-            expectedOptions
+            Builders<BsonDocument>.Filter.Empty,
+            Builders<BsonDocument>.Projection.Include("_id").Exclude("createdAt"),
+            Builders<BsonDocument>.Sort.Descending("createdAt")
         );
 
         // When
@@ -96,13 +76,10 @@ public class QueryBuilderTest
         string? rawFilter = null;
         var rawProjectionOptions = "{ \"_id\": 1, \"createdAt\": 0 }";
         string? rawSortOptions = null;
-        var expectedOptions = new QueryOptions(
-            new BsonDocument { ["_id"] = 1, ["createdAt"] = 0 }, 
-            null
-        );
         var expectedQuery = new Query(
-            new BsonDocument(),
-            expectedOptions
+            Builders<BsonDocument>.Filter.Empty,
+            Builders<BsonDocument>.Projection.Include("_id").Exclude("createdAt"),
+            null
         );
 
         // When
