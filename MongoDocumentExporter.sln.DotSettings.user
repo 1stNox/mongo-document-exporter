@@ -5,5 +5,6 @@
     &lt;TestId&gt;xUnit::00EC3F13-D22B-4604-AC95-1588951FD52C::net7.0::MongoDocumentExporter.Test.Utils.BsonDeserializerTest.ShouldReturnASimpleQuery&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::00EC3F13-D22B-4604-AC95-1588951FD52C::net7.0::MongoDocumentExporter.Test.Utils.BsonDeserializerTest.ShouldReturnAComplexQuery&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::00EC3F13-D22B-4604-AC95-1588951FD52C::net7.0::MongoDocumentExporter.Test.Utils.BsonDeserializerTest.ShouldThrowAFormatException&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::00EC3F13-D22B-4604-AC95-1588951FD52C::net7.0::MongoDocumentExporter.Test.Services.DocumentServiceTest.ShouldVerifyThatQueryWithoutSortIsExecuted&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
