@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
+using MongoDocumentExporter.Utils;
 
 namespace MongoDocumentExporter.Services;
 
@@ -7,13 +8,14 @@ public class DatabaseService
 {
     private static MongoClient? DatabaseClient { get; set; }
     private static IMongoDatabase? Database { get; set; }
+    public static EnvironmentVariables EnvironmentVariables { get; set; } = new();
     
     private static MongoClient GetDatabaseClient()
     {
         if (DatabaseClient is not null)
             return DatabaseClient;
         
-        var mongodbUri = Environment.GetEnvironmentVariable("MONGODB_URI");
+        var mongodbUri = EnvironmentVariables.RetrieveEnvironmentVariable("MONGODB_URI");
         if (mongodbUri is null)
             throw new NullReferenceException("MONGODB_URI environment variable is not defined");
 
@@ -26,7 +28,7 @@ public class DatabaseService
     {
         if (Database is null)
         {
-            var databaseName = Environment.GetEnvironmentVariable("DATABASE");
+            var databaseName = EnvironmentVariables.RetrieveEnvironmentVariable("DATABASE");
             if (databaseName is null)
                 throw new NullReferenceException("DATABASE must be defined");
             
@@ -39,11 +41,13 @@ public class DatabaseService
 
     public static IMongoCollection<BsonDocument> GetCollection()
     {
-        var collectionName = Environment.GetEnvironmentVariable("COLLECTION");
+        var collectionName = EnvironmentVariables.RetrieveEnvironmentVariable("COLLECTION");
         if (collectionName is null)
-            throw new NullReferenceException("DATABASE must be defined");
+            throw new NullReferenceException("COLLECTION must be defined");
 
-        return GetDatabase().GetCollection<BsonDocument>(collectionName) ??
-               throw new ArgumentException($"Collection {collectionName} does not exist");
+        var exists = GetDatabase().ListCollectionNames().ToList().Any(x => x == collectionName);
+        if (!exists) throw new ArgumentException($"Collection {collectionName} does not exist");
+        
+        return GetDatabase().GetCollection<BsonDocument>(collectionName);
     }
 }
